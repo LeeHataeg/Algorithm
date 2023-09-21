@@ -5,6 +5,7 @@ public class Solution
     public int solution(string t, string p) 
     {
         int answer = 0;
+        long numP = long.Parse(p);
         
         for(int index = 0; index <= t.Length - p.Length; index++)
         {
@@ -16,8 +17,7 @@ public class Solution
             {
                 string strNum = t.Substring(index, p.Length);
             	long numT = long.Parse(strNum);
-            	long numP = long.Parse(p);
-            
+                
             	if(numT <= numP)
             	{
                 	answer++;

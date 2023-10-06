@@ -1,30 +1,36 @@
-public class Solution {
-    public int[] solution(int n, int m) {
-            int[] answer = new int[2];
-
-            int 최대공약수 = 1;
-            int 최소공배수 = 0;
-
-            for (int i = 2; i < n + 1; i++)
+public class Solution 
+{
+    public int[] solution(int n, int m)
+    {
+        int temp;
+        int max = 2;
+        int[] answer = new int[2];
+        
+        if(m > n)
+        {
+            temp = n;
+            n = m;
+            m = temp;
+        }
+        
+        for(int i = 1; i <= m; i++)
+        {
+            if(n % i == 0 && m % i == 0)
             {
-                if (n % i == 0 && m % i == 0)
-                {
-                    최대공약수 = i;
-                }
+                max = i;
+                answer[0] = max;
             }
-
-            for (int j = 1; j < int.MaxValue / m; j++)
+        }
+        
+        for(int k = m; k <= m*n; k++)
+        {
+            if(k % n == 0 && k % m == 0)
             {
-                if ((m * j) % n == 0)
-                {
-                    최소공배수 = m * j;
-                    break;
-                }
+                answer[1] = k;
+                break;
             }
-
-            answer[0] = 최대공약수;
-            answer[1] = 최소공배수;
-
-            return answer;
+        }
+        
+        return answer;
     }
 }
